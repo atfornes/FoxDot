@@ -397,5 +397,12 @@ fx = FxList.new("drive", "overdriveDistortion", {"drive":0}, order=2)
 fx.add("osc = (osc * (drive * 50)).clip(0,0.2).fold2(2)")
 fx.save()
 
+# by ZBDM
+fx = FxList.new("sample_atk", "sample_atk", {"sample_atk":0, "sample_sus":1}, order=2)
+fx.add_var("env")
+fx.add("env = EnvGen.ar(Env.new(levels: [0,1,0], times:[sample_atk, sample_sus], curve: 'lin'))")
+fx.add("osc = osc*env")
+fx.save()
+
 In(); Out()
 Effect.server.setFx(FxList)
