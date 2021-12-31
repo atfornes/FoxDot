@@ -63,19 +63,6 @@ with SynthDef("growl") as growl:
     growl.osc = SinOsc.ar(growl.freq + SinOsc.kr(0.5, add=1, mul=2), mul=growl.amp) * Saw.ar((growl.sus / 1.5) * 32)
     growl.env = Env.env()
 
-# with SynthDef("bass") as bass:
-#     bass.defaults.update(rate=8.5)
-#     bass.freq = bass.freq / 4
-#     bass.osc  = LFTri.ar(bass.freq, mul=bass.amp) + VarSaw.ar(bass.freq, width=bass.rate / 10, mul=bass.amp) + SinOscFB.ar(bass.freq, mul=bass.amp / 2)
-#    bass.env  = Env.perc(atk=0.02, curve="'lin'", )
-
-with SynthDef("bass") as bass:
-    bass.defaults.update(rate=8)
-    bass.freq = bass.freq / 4
-    bass.amp  = bass.amp * 0.8
-    bass.osc  = LFTri.ar(bass.freq, mul=bass.amp) + VarSaw.ar(bass.freq, width=bass.rate / 10, mul=bass.amp) + SinOscFB.ar(bass.freq, mul=bass.amp / 2)
-    bass.env  = Env.perc(atk=0.02, curve="'lin'", )
-
 with SynthDef("dirt") as dirt:
     dirt.freq = dirt.freq / 4
     dirt.amp  = dirt.amp / 2
@@ -398,16 +385,19 @@ space.add()
 keys = FileSynthDef("keys")
 keys.add()
 
-dbass = FileSynthDef("dbass") 
+bass = FileSynthDef("bass")
+bass.add()
+
+dbass = FileSynthDef("dbass")
 dbass.add()
 
-sinepad = FileSynthDef("sinepad") 
+sinepad = FileSynthDef("sinepad")
 sinepad.add()
 
-video = FileSynthDef("video") 
+video = FileSynthDef("video")
 video.add()
 
-hydra = FileSynthDef("hydra") 
+hydra = FileSynthDef("hydra")
 hydra.add()
 
 # Get rid of the variable synth
