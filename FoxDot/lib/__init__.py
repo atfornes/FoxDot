@@ -24,6 +24,9 @@ from .SCLang import SynthDefs, Env, SynthDef, CompiledSynthDef
 from .Root import Root
 from .Scale import Scale, Tuning
 
+from .Killa.synth_killa import *
+from .Crashserver.crashFX import *
+
 # stdlib imports
 
 from random import choice as choose
